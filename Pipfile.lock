@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "852a98c1745dccc941a49d58c74b68a0c3db0612844bf36d20d095335a5f2e32"
+            "sha256": "6c2faf2d9ed7a2af9018b2b114b251b4d915e40272e277a5659826bbc395d2bc"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -106,6 +106,15 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==4.38.0"
+        },
+        "fpdf": {
+            "hashes": [
+                "sha256:0a94eb783ee933e32a44ad949a1aa6c3ca6fb35b608db53f8b216aec52fc1fb5",
+                "sha256:125840783289e7d12552b1e86ab692c37322e7a65b96a99e0ea86cca041b6779",
+                "sha256:9542f6ad0791d673955da954a0cf3554a0affac79deab87bee06b9b4d4e60990"
+            ],
+            "index": "pypi",
+            "version": "==1.7.2"
         },
         "kiwisolver": {
             "hashes": [
@@ -260,6 +269,7 @@
                 "sha256:f9a909a8bae284d46bbfdefbdd4a262ba19d3bc9921b1e76126b1d21c3c34135"
             ],
             "index": "pypi",
+            "markers": "python_version >= '3.8'",
             "version": "==1.23.5"
         },
         "packaging": {
