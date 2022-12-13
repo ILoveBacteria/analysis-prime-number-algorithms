@@ -33,7 +33,11 @@ def create_pdf_report():
     pdf.add_page()
     pdf.set_font('Times', 'B', font_size + 6)
     pdf.cell(0, pdf.font_size * 1.5, 'Report', align='C', ln=1)
-    pdf.ln(pdf.font_size / 2)
+    pdf.ln(pdf.font_size)
+
+    # Insert graph
+    pdf.image('outputs/graph.png', w=pdf.w - 2 * pdf.l_margin)
+    pdf.ln(pdf.font_size)
 
     # Create table header
     pdf.set_font('Times', 'B', font_size)
