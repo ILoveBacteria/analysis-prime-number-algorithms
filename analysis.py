@@ -11,7 +11,7 @@ class Data:
 
 
 def create_graph(data):
-    plt.figure(figsize=(8, 5), layout='constrained')
+    plt.figure(figsize=(8, 4.5), layout='constrained')
     for i in data:
         plt.plot(x[0:len(i.data)], list(map(int, i.data)), label=i.label)
     plt.xlabel("n")
@@ -31,11 +31,17 @@ def create_pdf_report():
 
     pdf.set_font('Times', '', font_size)
     pdf.cell(0, pdf.font_size, 'This pdf has been created automatically by analysis.py', align='C', ln=1)
+    pdf.ln(pdf.font_size)
+
+    pdf.cell(0, pdf.font_size, '*P: Parallel', align='L', ln=1)
+    pdf.cell(0, pdf.font_size, '*O: Open Other Programs', align='L', ln=1)
+    pdf.cell(0, pdf.font_size, '*NO: Not Optimized', align='L', ln=1)
+    pdf.ln(pdf.font_size)
 
     # Insert graph
     for i in range(1, count_graphs + 1):
         pdf.image(f'outputs/graph{i}.png', w=pdf.w - 2 * pdf.l_margin)
-    pdf.ln(pdf.font_size)
+        pdf.ln(pdf.font_size)
 
     # Create table header
     pdf.set_font('Times', 'B', font_size)
@@ -88,21 +94,21 @@ if __name__ == '__main__':
             with open(f'outputs/PrimeNumberSimple/algorithm{i}.txt', 'r') as f:
                 lines = f.readlines()
                 if len(lines) > 0:
-                    simple.append(Data(f'Algorithm {i}', lines))
+                    simple.append(Data(f'Algo {i}', lines))
     if os.path.exists('outputs/PrimeNumberParallel'):
         data_exist = True
         for i in range(1, 4):
             with open(f'outputs/PrimeNumberParallel/algorithm{i}.txt', 'r') as f:
                 lines = f.readlines()
                 if len(lines) > 0:
-                    parallel.append(Data(f'Algorithm {i} (P)', lines))
+                    parallel.append(Data(f'Algo {i} (P)', lines))
     if os.path.exists('outputs/PrimeNumberNotOptimized'):
         data_exist = True
         for i in range(1, 5):
             with open(f'outputs/PrimeNumberNotOptimized/algorithm{i}.txt', 'r') as f:
                 lines = f.readlines()
                 if len(lines) > 0:
-                    not_optimized.append(Data(f'Algorithm {i} (Not Optimized)', lines))
+                    not_optimized.append(Data(f'Algo {i} (NO)', lines))
     
     if not data_exist:
         print('Error: data not found')
