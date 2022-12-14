@@ -1,8 +1,6 @@
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Formatter;
 import java.util.Scanner;
@@ -48,13 +46,23 @@ public class Main {
                 unixTimeEnd = System.currentTimeMillis();
                 formatter4.format("%d\n", unixTimeEnd - unixTimeStart);
                 System.out.println("Finished algorithm 4 in " + (unixTimeEnd - unixTimeStart) + " ms");
+
+                formatter1.flush();
+                formatter2.flush();
+                formatter3.flush();
+                formatter4.flush();
             }
         }
     }
     
     public static void main(String[] args) {
         try {
-            run(new PrimeNumberSimple());
+            if (Files.notExists(Paths.get("inputs.txt"))) {
+                TestCaseGenerator.generate();
+            }
+           run(new PrimeNumberSimple());
+//            run(new PrimeNumberParallel());
+        //    run(new PrimeNumberNotOptimized());
         } catch (IOException e) {
             e.printStackTrace();
         }
