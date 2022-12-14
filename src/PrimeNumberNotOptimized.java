@@ -1,47 +1,5 @@
 public class PrimeNumberNotOptimized implements PrimeNumber {
     @Override
-    public int countPrimeNumbers3(int end) {
-        long[] notPrime = new long[end + 1];
-        notPrime[1] = 1;
-        for (long i = 2; i <= end; i++) {
-            for (long j = 2; i * j <= end; j++) {
-                long index = i * j;
-                notPrime[(int) index] = 1;
-            }
-        }
-        
-        long result = 0;
-        for (long i = 1; i <= end; i++) {
-            if (notPrime[(int) i] == 0) {
-                result++;
-            }
-        }
-        return (int) result;
-    }
-    
-    @Override
-    public int countPrimeNumbers1(int end) {
-        long result = 0;
-        for (long i = 1; i <= end; i++) {
-            if (isPrimeNumber1((int) i)) {
-                result++;
-            }
-        }
-        return (int) result;
-    }
-    
-    @Override
-    public int countPrimeNumbers2(int end) {
-        long result = 0;
-        for (long i = 1; i <= end; i++) {
-            if (isPrimeNumber2((int) i)) {
-                result++;
-            }
-        }
-        return (int) result;
-    }
-    
-    @Override
     public boolean isPrimeNumber1(int n) {
         if (n == 1) {
             return false;
@@ -75,6 +33,48 @@ public class PrimeNumberNotOptimized implements PrimeNumber {
             }
         }
         return true;
+    }
+
+    @Override
+    public int countPrimeNumbers1(int end) {
+        long result = 0;
+        for (long i = 1; i <= end; i++) {
+            if (isPrimeNumber1((int) i)) {
+                result++;
+            }
+        }
+        return (int) result;
+    }
+
+    @Override
+    public int countPrimeNumbers2(int end) {
+        long result = 0;
+        for (long i = 1; i <= end; i++) {
+            if (isPrimeNumber2((int) i)) {
+                result++;
+            }
+        }
+        return (int) result;
+    }
+
+    @Override
+    public int countPrimeNumbers3(int end) {
+        long[] notPrime = new long[end + 1];
+        notPrime[1] = 1;
+        for (long i = 2; i <= end; i++) {
+            for (long j = 2; i * j <= end; j++) {
+                long index = i * j;
+                notPrime[(int) index] = 1;
+            }
+        }
+        
+        long result = 0;
+        for (long i = 1; i <= end; i++) {
+            if (notPrime[(int) i] == 0) {
+                result++;
+            }
+        }
+        return (int) result;
     }
     
     @Override
